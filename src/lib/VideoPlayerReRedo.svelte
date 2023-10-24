@@ -1,7 +1,7 @@
 <script context="module">
   let allVideos = [];
 
-  export function getAllVideosLength() {
+  export function logAllVideoInstances() {
     allVideos.forEach((vid) => console.log(vid));
   }
 </script>

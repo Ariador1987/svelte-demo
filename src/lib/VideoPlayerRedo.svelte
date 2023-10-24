@@ -12,6 +12,8 @@
   // the reference to bind the node to
   let video;
 
+  let currentTime;
+
   onMount(() => allVideos.add(video));
   onDestroy(() => allVideos.delete(video));
   //   let currentTime = 0;
@@ -21,6 +23,7 @@
 <button on:click={() => console.log(allVideos.size)}>BTN</button>
 <video
   bind:this={video}
+  bind:currentTime
   class:playing={!paused}
   {src}
   controls
@@ -28,6 +31,7 @@
   bind:paused
   on:play={() =>
     allVideos.forEach((vid) => {
+      console.log(allVideos);
       // if the CB is not equal to this instance
       if (vid !== video) {
         vid.pause();
@@ -36,6 +40,7 @@
 />
 
 <button on:click={() => (paused = !paused)}>{paused ? 'Play' : 'Pause'}</button>
+<h2>{currentTime}</h2>
 
 <!-- <p>{currentTime}</p>
 <p>{volume}</p> -->
